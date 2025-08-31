@@ -230,7 +230,60 @@ export default function App() {
               disabled={agentLoading}
               className="w-full flex justify-center items-center gap-2 bg-emerald-500 hover:bg-emerald-600 transition px-4 py-3 rounded-lg font-semibold"
             >
-              {agentLoading ? <Loader2 className="animate-spin" /> : <Search />}
+                  {agentLoading && (
+                    <motion.div
+                      className="fixed inset-0 flex items-center justify-center bg-black/70 z-50"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                    >
+                      <motion.div
+                        className="bg-slate-800 p-8 rounded-2xl shadow-xl flex flex-col items-center max-w-sm w-full"
+                        initial={{ scale: 0.8 }}
+                        animate={{ scale: 1 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <FlaskConical className="w-12 h-12 text-emerald-400 animate-bounce" />
+
+                        {/* Sequential Status Messages */}
+                        <motion.p
+                          className="mt-6 text-lg font-semibold text-white"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 0.6 }}
+                        >
+                          🔌 Connecting to Regulatory Agent…
+                        </motion.p>
+
+                        <motion.p
+                          className="mt-2 text-slate-300 text-sm"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 1.2, duration: 0.6 }}
+                        >
+                          📡 Querying Ingredient Database…
+                        </motion.p>
+
+                        <motion.p
+                          className="mt-2 text-slate-300 text-sm"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 2.4, duration: 0.6 }}
+                        >
+                          🧪 Running Compliance Checks…
+                        </motion.p>
+
+                        <motion.p
+                          className="mt-2 text-slate-300 text-sm"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 3.6, duration: 0.6 }}
+                        >
+                          ✅ Preparing Report…
+                        </motion.p>
+                      </motion.div>
+                    </motion.div>
+                  )}
+
               Validate Formulation
             </button>
           </div>
